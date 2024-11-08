@@ -1,0 +1,184 @@
+<link rel="stylesheet" href="/css/room.css"> 
+
+<div style="display: flex; padding-top: 20px; border-radius: 10px; border-top: 10px solid #0066cc;">
+    <div id="userSidebar" style="width: 200px; padding: 10px; border-right: 1px solid #0066cc;  border-radius: 10px;">
+        <h2 style="text-align: center;">Users</h2>
+        <ul id="userList" style="font-size: 20px;"></ul>
+        <button id="leaveBtn" style="margin-top: 20px; width: 100%; padding: 10px; background-color: #dc3545; color: white; border: none; cursor: pointer;">Leave Room</button>
+    </div>
+
+    <div style="flex: 1; padding: 10px; background-color: #75bcff;  border-radius: 10px; ">
+        <h1 id="chat-title" style="text-align: center; color: #333;"><%= room.roomName %> Chat Room</h1>
+
+        <div id="chatBox" style="height: 300px; overflow-y: scroll; border: 1px solid #0066cc; margin-bottom: 10px;  border-radius: 10px;  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ border-top: 10px solid #0066cc">
+            <ul id="messages">
+                <% if (messages && messages.length) { %>
+                    <% let dateTime = new Set(); %> 
+            
+                    <% messages.forEach(message => { %>
+                        <% const messageDate = new Date(message.timestamp).toISOString(); %> 
+                        
+                        <% if (!dateTime.has(messageDate)) { %>
+                            <small class="date" data-date="<%= messageDate %>"></small>
+                            <% dateTime.add(messageDate); %>
+                        <% } %>
+            
+                        <li class="message-box">
+                            <strong class="message-sender"><%= message.sender %>:</strong>
+                            <br>
+                            <p class="message-text"><%= message.text %></p>
+                        </li>
+                    <% }) %>
+                <% } %>
+            </ul>
+</div>            
+
+        <form id="message-form">
+            <input id="message" name="message" placeholder="Enter message" style="width: calc(100% - 10px); margin: 5px 0; padding: 25px; border: 1px solid #ccc;" />
+            <button id="sendBtn" style="padding: 10px; border: none; background-color: #0066cc; color: white; cursor: pointer; width: 100%;">Send</button>
+        </form>
+    </div>
+</div> 
+ <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/relativeTime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/isToday.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/isYesterday.min.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const userId = "<%= user._id %>";
+    dayjs.extend(dayjs_plugin_relativeTime);
+dayjs.extend(dayjs_plugin_isToday);
+dayjs.extend(dayjs_plugin_isYesterday);
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.date').forEach(function (dateElement) {
+        const date = dayjs(dateElement.dataset.date);
+        
+        // Define the getDate function
+        function getDate(date, dateText) { 
+            if (date.isToday()) {
+                let time = date.format('HH:mm');
+                dateText.textContent = `Today at ${time}`;
+            } else if (date.isYesterday()) {
+                let time = date.format('HH:mm');
+                dateText.textContent = `Yesterday at ${time}`;
+            } else if (dayjs().diff(date, 'day') < 7) { 
+                let day = date.format('dddd HH:mm');
+                dateText.textContent = `${day}`;
+            } else if (dayjs().diff(date, 'day') < 30) { 
+                let month = date.format('MMMM Do');
+                dateText.textContent = `${month}`;
+            } else {
+                let formattedDate = date.format('MMMM Do, YYYY');
+                dateText.textContent = `${formattedDate}`;
+            }
+            console.log(`Updated text: ${dateText.textContent}`);
+        }
+
+        // Call getDate function to update dateElement's content
+        getDate(date, dateElement);
+    });
+});
+
+
+
+    const socket = io();
+
+    // Join the room
+    socket.emit('joinRoom', { username: '<%= username %>' , room: '<%= room.roomName %>' });
+    
+    // Listen for messages
+    socket.on('message', (msg) => {
+        const item = document.createElement('li');
+        item.classList.add('message-box');
+        
+        const senderName = document.createElement('strong');
+        senderName.classList.add('message-sender');
+       senderName.textContent = `${msg.username ? msg.username : 'System'}`;
+
+        senderName.style.display = 'block';  
+        
+        const messageText = document.createElement('p');
+        messageText.classList.add('message-text');
+        messageText.textContent = msg.text;
+        messageText.style.display = 'inline';  
+        
+        const messagedate = document.createElement('small');
+        messagedate.classList.add('message-date');
+        messagedate.style.fontSize = '0.9rem';
+        messagedate.style.color = '#777';
+        messagedate.style.marginLeft = '5px';  
+        messagedate.textContent = `${new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        messagedate.style.display = 'inline'; 
+
+        item.appendChild(senderName);
+        item.appendChild(messageText);
+        item.appendChild(messagedate);
+        /*document.getElementById('messages').appendChild(item);*/
+        const messagesContainer = document.getElementById('messages');
+        messagesContainer.appendChild(item);
+    
+        const chatBox = document.getElementById('chatBox');
+        chatBox.scrollTo({
+            top: chatBox.scrollHeight,
+            behavior: 'smooth' 
+        });
+    });
+    
+        
+
+    
+    
+
+    // Listen for user list updates
+    socket.on('roomUsers', ({ room, users }) => {
+        const userList = document.getElementById('userList');
+        userList.innerHTML = '';
+        users.forEach((user) => {
+            const li = document.createElement('li');
+            const userLink = document.createElement('a');
+            
+            userLink.textContent = user.username ;
+            userLink.href = `http://localhost:5000/users/profile/${userId}`;
+            userLink.setAttribute('target', '_blank');
+            userLink.style.textDecoration = 'none';
+
+            userLink.style.color = 'black';
+            userLink.style.fontWeight = 'bold';
+        
+            li.appendChild(userLink);
+            userList.appendChild(li);
+            console.log(user.id);
+            console.log(user);
+
+        });
+    });
+    
+
+    // Handle message form submission
+    const form = document.getElementById('message-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const messageInput = document.getElementById('message');
+        const message = messageInput.value.trim();
+        
+        if (message) {
+            socket.emit('chatMessage', message); 
+            messageInput.value = ''; 
+        }
+    });
+    
+    
+        
+
+    // Handle leave room button
+    document.getElementById('leaveBtn').addEventListener('click', () => {
+        document.getElementById('leaveBtn').addEventListener('click', () => {
+            window.location.href = '/chat/chatroom';
+        });
+
+    });
+
+</script>
