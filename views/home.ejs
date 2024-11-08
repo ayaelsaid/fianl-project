@@ -1,0 +1,243 @@
+
+<link rel="stylesheet" href="/css/home.css"> 
+
+
+<header>
+    <ul id="auth-btn">
+        <li><a href="/auths/login">Log in</a></li>
+        <li><a href="/auths/signup">Sign Up</a></li>
+    </ul>
+
+    <h1>
+        <span class="meet">MEET</span>
+        <span class="me">ME</span>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="#slider-images">Home</a></li>
+            <li><a href="#my-profile">My Profile</a> </li>
+            <li><a href="#community">Chat</a></li>
+          <li><a href="#animal-info" class="response">My Breeding Requests</a> </li>  
+            
+
+        <li>    <a href="#Breeding-Request" class="post-request-link">
+            <i class="fas fa-plus-circle"></i> Create Breeding Request"
+        </a></li>
+
+            <li><a href="#about">About</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="line">
+
+    <section id="slider-images">
+        <div class="slider">
+            <img src="../imges/istockphoto-1276788283-2048x2048.jpg" alt="Image 1">
+            <img src="../imges/istockphoto-1349349263-2048x2048.jpg" alt="Image 2">
+            <img src="../imges/premium_photo-1721955487745-a2c3aea86d1c.jpg" alt="Image 3">
+        </div>
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div>
+            <p class="welcome-message">Welcome to<span class="meet">MEET</span>
+                <span class="me">ME</span></p>
+            <p>We're glad to have you here. Explore our features and join our community!</p>
+        </div>
+    </section>
+    </div>
+    <div class="line">
+        <a href="/" class="welcome-button" style="color: white; background-color:#0056b3; padding: 40px; margin: 40px">Have Your Own Profile</a>
+
+
+        <section class="profile" id="my-profile">
+            <div class="profile-photo-slider">
+                <img src="../imges/Screenshot 2024-11-07 234926.png" alt="Image 1">
+            </div>
+        </section>
+            </div>
+
+
+    <div class="line">
+        <h2 style="color: #0056b3 ; padding-top:50px;">Find Breeding Requests</h2>
+
+    <section id="animal-info">
+        <div class="animal-grid">
+            <div class="animal-card">
+                <img src="../imges/valentines-dog-love-french-bulldog-holding-cupids-arrow-mouth-wearing-sunglasses-lying-meadow-grass-park-gift-65133272.webp" alt="Animal 1"> <!-- Replace with your image -->
+                <div class="animal-info">
+                    <h3>Hi, I am BOby</h3>
+                    <p>Age: 5 %></p>
+                    <p>Species: Dog</p>
+                    <p>Gender: Female</p>
+                    <p>About Me:  I loves to play and is looking for a loving home. Marry me?.</p>
+                    <a href="/" class="marry-btn">Marry Me</a>
+                </div>
+    
+            </div>
+            <div class="animal-card">
+                <img src="../imges/valentines-dog-jack-russell-crazy-silly-love-day-rose-petals-flying-falling-as-background-isolated-white-rose-84176849.jpg" alt="Animal 2"> <!-- Replace with your image -->
+                <div class="animal-info">
+                    <h3>Hi, I am Loky</h3>
+                    <p>Age: 5 %></p>
+                    <p>Species: Dog</p>
+                    <p>Gender: Female</p>
+                    <p>About me:I am friendly and enjoys cuddles.Marry me?.</p>
+                    <a href="/" class="marry-btn">Marry Me</a>
+                </div>
+            </div>
+            <div class="animal-card">
+                <img src="../imges/valentines-dog-love-french-bulldog-holding-cupids-arrow-mouth-wearing-sunglasses-lying-meadow-grass-park-gift-65133272.webp" alt="Animal 3"> <!-- Replace with your image -->
+                <div class="animal-info">
+                    <h3>Hi, I am Ed</h3>
+                    <p>Age: 5 %></p>
+                    <p>Species: Dog</p>
+                    <p>Gender: Female</p>
+                    <p>About me: I am adventurous and loves the outdoors.</p>
+                    <a href="/" class="marry-btn">Marry Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <div class="line">
+        <section id="community">
+            <div class="chat">
+                <h2 style="color: #0056b3;">ChatRoom</h2>
+                
+                <video autoplay muted loop class="community-video">
+                    <source src="../videos/Screen Recording 2024-11-08 005931.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+        
+                <a href="/" class="welcome-button" style="color: white; background-color:#0056b3;">Join Chat Room</a>
+            </div>
+            <div class="description">
+                <h2 style="color: #0056b3; padding-top:50px;">Meet Animal Lovers!</h2>
+                <p style="color: white; font-weight: bold; padding-top:50px;">
+                    Here you can meet people who have an interest in animals and share experiences. 
+                    Join our community to discuss, learn, and connect with others who share your passion for animals!
+                </p>
+            </div>
+        </section>
+        
+    </div>
+
+    <div class="line">
+
+    <section class="form-re" id="Breeding-Request">
+        <div class="form-grid">
+            <div class="description-form">
+                <h2>Create Breeding Request</h2>
+                <p>Complete the form to find the perfect match for your pet and begin their journey toward companionship.</p>
+            </div>
+            <div class="form-container">
+                <h2>Add Your Pet Details</h2>
+                <form>
+                    <label for="petName">Pet Name:</label>
+                    <input type="text" id="petName" name="petName" required>
+    
+                    <label for="petAge">Pet Age:</label>
+                    <input type="number" id="petAge" name="petAge" min="0" required>
+    
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" required>
+    
+                    <label for="petGender">Pet Gender:</label>
+                    <select id="petGender" name="petGender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+    
+                    <label for="petDescription">Pet Description:</label>
+                    <textarea id="petDescription" name="petDescription" rows="4" placeholder="Describe your pet..."></textarea>
+    
+                    <label for="petImages">Pet Images:</label>
+                    <input type="file" id="petImages" name="petImage" accept="image/*" onchange="previewImage(event)">
+    
+                    <img id="imagePreview" src="#" alt="Image Preview" style="display: none; margin-top: 10px; max-width: 100%; height: auto;">
+                </form>
+                <a href="/" class="welcome-button" style="color: white; background-color:#0056b3;">Submit Pet Details</a> <!-- Button to welcome page -->
+
+            </div>
+        </div>
+    </section>
+    </div>
+    <div class="line">
+
+    <section class="contact-form-section" id="Contact">
+        <div class="contact-form-container">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you! Please fill out the form below, and we'll get in touch as soon as possible.</p>
+    
+            <form action="/submit-contact" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Type your message here" required></textarea>
+                </div>
+                <a href="/" class="submit-btn">Send Message</a> <!-- Button to welcome page -->
+
+            </form>
+        </div>
+    </section>
+    </div>
+        
+    <div class="line">
+
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-photo">
+                <h1>
+                    <span class="meet">MEET</span>
+                    <span class="me">ME</span>
+                </h1>
+            
+            
+            </div>
+            <div class="about-description">
+                <h2>About Our Site</h2>
+                <p>This platform connects pet lovers, allowing them to interact, share experiences, and post breeding requests for their pets. Users can create a profile, post their pet's details for breeding, and engage in real-time conversations in dedicated chat rooms such as rooms for dogs, cats, other animals, and a breeding requests room. The website provides a space for users to communicate, ask for breeding partners, and find matching pets based on their needs.
+        
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="site-name">
+            <h1>
+                <span class="meet">MEET</span>
+                <span class="me">ME</span>
+            </h1>
+
+        </div>
+        <div class="contact-info">
+            <p>Phone: +1 (555) 123-4567</p>
+            <p>Email: contact@animalconnection.com</p>
+            <p>Address: 123 Animal St, Pet City, AN</p>
+        </div>
+    </footer>
+
+</main>
+
+
+<script src="/js/home-function.js"></script>
