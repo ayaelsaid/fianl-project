@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/css/requestsPage.css"> 
+
+
+    <div class="header">
+         <h1>
+         
+             <span class="meet">MEET</span>
+             <span class="me">ME</span>
+     
+         </h1>  
+         
+         <nav class="head">
+        <p class="lead mb-3">
+            Welcome <%= user.firstName + ' ' + user.lastName %>
+        </p>
+        <br>
+        <a href="/dashboard" class="marry">Pet Requests</a>
+
+            <a href="/users/profile">My Profile</a>
+            <a href="/chat/chatroom">Chat</a>
+            <a href="#" class="response" style="color: white; text-decoration: underline; font-size: 20px; font-weight: 600">My Breeding Requests</a> 
+            
+
+            <a href="/request/addRequest" class="post-request-link">
+                <i class="fas fa-plus-circle"></i> Create Breeding Request"
+            </a>
+            
+            <a href="/auths/logout" class="btn btn-logout">Logout</a> 
+        </nav>
+    
+    </div>
+    <main>
+        <% eachPostWithRequests.forEach((item, i) => { %>
+          <% const { post, requests, numRequests } = item; %>
+          <% const { petImage, petAge, petDescription, petGender, petName, type, createdAt } = post; %>
+          
+          <div class="animal-card-container">
+            <div class="post-card">
+              <p>Post N: <%= i + 1 %></p>  <!-- Use the index `i` to display the post number -->
+              <div class="animal-card">
+                <img src="<%= post.petImage %>" alt="Pet Image">
+                <p><%= petName %></p>
+                <h2><%= petGender %></h2>
+                <p><strong>Type:</strong> <%= petDescription %></p>
+                <p><strong>Age:</strong> <%= petAge %></p>
+                <p><strong>Description:</strong> <%= petDescription %></p>
+                <p class="on"><strong>On</strong><span id="createdAt-<%= i %>" data-created-at="<%= createdAt %>"></span>
+                </p>
+              </div>
+      
+              <% if (requests && requests.length > 0) { %>
+
+                <button class="see-all-requests-btn" onclick="toggleRequests(<%= i %>)">
+                  <%= numRequests %> requests</button>
+                
+                <div class="request-cards" id="request-cards-<%= i %>" style="display: none;">
+                  <% requests.forEach((request, requestIndex) => { %>
+                    <% const { animalName, animalType, animalAge, phone, petDescriptionRequest, createdAt, userId } = request; %>
+      
+                    <div class="request-card">
+                      <h3><%= animalName %></h3>
+                      <p><strong>Type:</strong> <%= animalType %></p>
+                      <p><strong>Age:</strong> <%= animalAge %> years old</p>
+                      <p><strong>Description:</strong> <%= petDescriptionRequest %></p>
+                      <p><strong>Owner's Phone:</strong> <%= phone %></p>
+                      <p class="owner-info"><strong>Owner profile:</strong><a href="http://localhost:5000/users/profile/<%= userId %>" target="_blank">see Profile</a></p>
+                      <p class="on"><strong>On</strong><span id="createdAt-request-<%= i %>-<%= requestIndex %>" data-created-at="<%= createdAt %>"></span>
+
+                    </div>
+                  <% }) %>
+                </div>
+              <% } else { %>
+                <p>No requests available.</p>
+              <% } %> 
+            </div>
+          </div>
+        <% }) %>
+      </main>      
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+
+<script src="/js/requests-matching-function.js">
+
+
+</script>
