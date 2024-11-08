@@ -1,0 +1,490 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="/css/profile.css"> 
+
+
+<div class="header">
+
+   <div class="profile-nav">
+    <a class="profile-nav-link" target="_blank" href="/users/profile/<%= user._id%>">View Profile as Others See It</a>
+   </div>
+    <h1>
+    
+        <span class="meet">MEET</span>
+        <span class="me">ME</span>
+
+    </h1>  
+    
+    <nav class="head">
+        <a href="/dashboard" class="marry">Pet Requests</a>
+
+
+            <a href="#" style="color: white; text-decoration: underline; font-size: 20px; font-weight: 600">My Profile</a>
+            <a href="/chat/chatroom">Chat</a>
+            <a href="/request/response" class="response">My Breeding Requests</a> 
+            
+
+            <a href="/request/addRequest" class="post-request-link">
+                <i class="fas fa-plus-circle"></i> Create Breeding Request"
+            </a>
+
+            
+            <a href="/auths/logout" class="btn btn-logout">Logout</a> 
+
+        
+
+    </nav>
+</div>
+<div class="profile-container">
+    <p class="lead mb-3"><%= user ? (user.firstName + ' ' + user.lastName) : 'Guest' %></p>
+    <div class="upload-container">
+
+    <div id="icon-on">
+        <div id="image-profile-pic" class="profile-picture">
+    
+            <% if (profile.profileImage) { %>
+                    <img src="<%= profile.profileImage %>" alt="Profile Picture" />
+            <% } else { %>
+                    <p>
+                        <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+                    </p>
+            <% } %>
+    
+        </div>  
+        <form action="/users/profile/uploadProfileImage" method="POST" enctype="multipart/form-data">
+                <label for="imageUpload" id="upload-icon">
+                    <i class="fas fa-camera"></i>
+                    <input type="file" name="profileImage" id="imageUpload" accept="image/*" style="display: none;" onchange="previewImage(event)">
+
+
+                </label>                    
+                <div class="button-container">
+                        <input type="submit" id="profileimg-btn" value="Upload">
+                        <button type="button" onclick="canclingaddingDetails()">Cancel Image</button>
+    
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form method="Post" action="/users/profile/deleteProfileImage">
+            <input type="submit" id="deleteImageButton" value="Delete Image">
+            
+            </form>
+        
+    </div>
+</div> 
+<div class="photo-cover">
+    
+    <div class="cover-contaner">
+        <% if (profile.coverPhoto) { %>
+            <img src="<%= profile.coverPhoto %>" alt="Profile Picture" />
+        <% } else { %>
+            <p>
+                <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+            </p>
+        <% } %> 
+    </div>
+    
+<div class="profile-image-actions">
+    <form method="Post" action="/users/profile/deleteCovreImage">
+        <input type="submit" id="deletecover-btn" value="Delete Image">
+        
+        </form>
+    
+    <form action="/users/profile/uploadCoverImage" method="POST" enctype="multipart/form-data">
+        <div class="file-upload">
+
+        <label class="file-upload-button">
+Choose cover
+            <input type="file" name="coverPhoto" id="coverPhoto" accept="image/*" style="display: none;" onchange="previewImageCover(event)"/>
+        </label>
+    </div>
+            <div class="button-container-cover">
+            <input type="submit" id="" value="Upload" style="left:100px;">
+
+             <button type="button" onclick="canclingaddingDetails()">Cancel Image</button>
+
+            </div>
+     </div>
+    </div> 
+</form>
+
+
+</div>
+
+<div class="links">
+    <div class="sections">
+        <a href="#bio-link" id="bio" class="active">Bio & Photo</a>
+        <a href="#setting" id="setting">Info & Settings</a>
+    </div>
+</div>
+<div class="bio-section" style="display: block;">
+    <div class="profile-bio">
+                <div class="heart-shape">
+                    <h2>Bio</h2>
+                </div>
+                <div class="profile-info">
+                    <% if(profile.bio) { %>
+                        <div class="edit-re-btn">
+                            <button type="button" class="btn btn-primary edit-bio-btn">Edit Bio</button>
+                        <form action="/users/profile/remove-bio" method="POST">
+                        <input type="submit" class="btn btn-primary remove-bio-btn" value="Remove Bio">
+                        </form>
+                        </div>
+                            <!-- Bio Edit Form (hidden by default) -->
+                            <form class="text-edit" style="display: none;" action="/users/profile/bio" method="POST">
+                                <textarea name="bio" style="width: 100%; height: 150px; border: 1px solid #ccc; border-radius: 4px; padding: 10px;" placeholder="welcome"><%= profile.bio %></textarea>
+                                <button type="submit" style="margin-top: 10px;">Update</button>
+                                <button type="button" style="margin-top: 10px;" onclick="closeBio()">Cancel</button> 
+                            </form>                                         
+                        <p id="bio-text">Bio: <%= profile.bio %></p>
+                    <% } else { %>
+                        <button class="btn btn-primary bio-btn" style="display:block; margin: 10px;">Add Bio</button>
+                        <form action="/users/profile/bio" method="POST">
+                            <textarea name="bio" placeholder="Add bio" style="width:100%; height: 150px; border: 1px solid #ccc; border-radius: 4px;  padding: 10px;" required></textarea>
+                            <button type="submit"  style="margin-top: 10px;">Save Bio</button>
+                            <button type="button" style="margin-top: 10px;" onclick="closeBio()">Cancel</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+
+                
+
+
+<div class="upploaded-more-img">
+<p class="title"> My Photos</p>
+<p class="photo-p">profile photos</p>
+
+<div class="more-img">
+
+    <% if (profile.images) { %>
+        <% if (profile.images.profileImages) { %>
+            <% for (let i = 0; i < profile.images.profileImages.length; i++) { %>
+                <div class="img-more">
+
+                <img src="<%= profile.images.profileImages[i].imagePath %>" alt="Profile Picture">
+                </div>
+
+                <!-- <p><%= profile.images.profileImages[i].imageDate %></p> -->
+            <% }  %>
+        <% } else { %>
+            <p>No profile picture available.</p>
+        <% }  %>
+</div>
+<p class="photo-p">cover Photos</p>
+
+<div class="more-img">
+
+
+        <% if (profile.images.coverPhotos) { %>
+            <% for (let i = 0; i < profile.images.coverPhotos.length; i++) { %>
+                <div class="img-more">
+
+                <img src="<%= profile.images.coverPhotos[i].imagePath %>" alt="Cover Photo">
+                </div>
+                <!-- <p><%= profile.images.coverPhotos[i].imageDate %></p> -->
+            <% } %>
+        <% } else { %>
+            <p>No Cover picture available.</p>
+        <% } %>
+</div>
+<p class="photo-p">Other Photos</p>
+
+<div class="more-img">
+
+
+    <% if (profile.images.otherImages) { %>
+        <% for (let i = 0; i < profile.images.otherImages.length; i++) { %>
+            <div class="img-more">
+                <img src="<%= profile.images.otherImages[i].imagePath %>" alt="Other Image">
+            </div>
+                <!-- <p><%= profile.images.otherImages[i].imageDate %></p> -->
+        <% } %>
+    <% } else { %>
+
+        <p>upload  more photos.</p>
+    <% } %>
+</div>
+
+<% } %>
+</div>
+
+<div class="upload-form">
+    <form action="/users/profile/uploadImagePage" method="POST" enctype="multipart/form-data">
+        <label class="images-p" for="images">UPLOAD MORE PHOTOS
+            <input type="file" id="images" name="images" accept="image/*" multiple>
+        </label>
+        <div class="more-btn">
+            <input type="submit" id="btn-more-imges" value="Upload">
+            <button type="button" id="btn-more-cancle" onclick="cancelImage()">Cancel Image</button>
+        </div>
+    </form>
+    
+    <!-- Image preview section, immediately below the form -->
+    <div id="preview-container-more" class="preview-container-more"></div>
+</div>
+</div>
+<div class="setting-section" style="display: none;"> 
+    <div class="grid-container">
+
+<aside class="grid-item sidebar">
+    <div id="info-btn">
+        <button class="p-btn basic-info-btn">Basic info</button>
+        <button class="p-btn personal-info-btn">Personal Information</button>
+        <button class="p-btn setting">Setting</button>
+        <button class="p-btn" id="edit-profile" style="display: none;">Edit Profile</button>
+        <button class="p-btn" id="add-details" style="display: none;">Add Details</a>
+        <button class="p-btn btn-primary change-password" style="display: none;">Change Password</button>
+        <form action="/users/profile/delete" method="POST">
+            <button type="submit" class="p-btn remove-profile-btn">Delete Profile</button>
+        </form>
+    
+    </div>
+
+</aside>
+<main class="grid-item main">
+    <div class="personal-info" id="info-basic" style="display: block;">
+        <h3>Basic Info</h3>
+
+        <p>Email:</p>
+        <ul>
+            <li><%= user.email %></li>
+        </ul>
+
+        <p>First Name:</p>
+        <ul>
+            <li><%= user.firstName %></li>
+        </ul>
+
+        <p>Last Name:</p>
+        <ul>
+            <li><%= user.lastName %></li>
+        </ul>
+    </div>
+
+<!-- all details -->
+<div class="personal-info" id="info-details" style="display: none;">
+<h3>Personal Information</h3>
+
+<p>Gender:</p>
+<ul>
+    <li><%= profile.gender || 'Add Gender' %></li>
+</ul>
+
+<p>Relationship:</p>
+<ul>
+    <li><%= profile.relationship || 'Add Relationship' %></li>
+</ul>
+
+<p>Phone Number:</p>
+<ul>
+    <% if (profile.phone && profile.phone.length > 0) { %>
+        <% profile.phone.forEach((phone) => { %>
+            <li><%= phone %></li>
+        <% }) %>
+    <% } else { %>
+        <li>Add phone</li>
+    <% } %>
+</ul>
+
+<p>Job Title:</p>
+<ul>
+    <% if (profile.jobTitle && profile.jobTitle.length > 0) { %>
+        <% profile.jobTitle.forEach((jobTitle) => { %>
+            <li><%= jobTitle %></li>
+        <% }) %>
+    <% } else { %>
+        <li>Add job title</li>
+    <% } %>
+</ul>
+
+<p>Company:</p>
+<ul>
+    <% if (profile.company && profile.company.length > 0) { %>
+        <% profile.company.forEach((company) => { %>
+            <li><%= company %></li>
+        <% }) %>
+    <% } else { %>
+        <li>Add company</li>
+    <% } %>
+</ul>
+
+<p>Education:</p>
+<ul>
+    <% if (profile.education && profile.education.length > 0) { %>
+        <% profile.education.forEach((education) => { %>
+            <li><%= education %></li>
+        <% }) %>
+    <% } else { %>
+        <li>Add education</li>
+    <% } %>
+</ul>
+
+<p>Age:</p>
+<ul>
+    <li>Age: <%= profile.age !== undefined ? profile.age : 'Add Age' %></li>
+</ul>
+
+<p>Location:</p>
+<ul>
+    <li><%= profile.location || 'Add Location' %></li>
+</ul>
+
+<p>Languages:</p>
+<ul>
+    <% if (profile.languages && profile.languages.length > 0) { %>
+        <% profile.languages.forEach((language) => { %>
+            <li><%= language %></li>
+        <% }) %>
+    <% } else { %>
+        <li>Add Languages</li>
+    <% } %>
+</ul>
+
+<p>Interests:</p>
+<ul>
+    <% if (profile.interests && profile.interests.length > 0) { %>
+        <% profile.interests.forEach((interest) => { %>
+            <li><%= interest %></li>
+        <% }) %>
+    <% } else { %>
+        <li>Add Interests</li>
+    <% } %>
+</ul>
+</div>
+
+    <!-- /* setting buttons --> 
+     <!-- edit basic info -->
+     <div class="edit-basci-modal" style="display: none;">
+        <div >
+            <h3>Edit Profile</h3>
+            <form class="form-edit-basic-info" method="POST" action="/users/profile/update">
+                <label class="form-edit-label" for="email">Email:</label>
+                <input type="text" id="email" name="email" value="<%= user.email %>"><br>
+                
+                <label class="form-edit-label" for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>"><br>
+                
+                <label class="form-edit-label" for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>"><br>
+                
+                <input type="submit" class="save-basic-btn" value="Save Changes">
+                <button type="button" class="cancle-btn" onclick="closeSettings()">Cancel</button>
+            </form>
+        </div>
+    </div>
+<!-- add more the details  -->
+<div class="personal-form-edit" style="display: none;">
+        
+<h3>Add More Details</h3>
+<form  class="form-edit-basic-info" action="/users/profile/addDetails" method="POST">
+    <label class="form-label" for="gender">Gender:</label>
+    <select id="gender" name="gender">
+        <option value="<%= profile.gender || '' %>">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select><br><br>
+
+    <label class="form-label" for="relationship">Relationship:</label>
+    <select id="relationship" name="relationship">
+        <option value="<%= profile.relationship || '' %>">Select Relationship</option>
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+        <option value="engaged">Engaged</option>
+        <option value="divorced">Divorced</option>
+        <option value="widowed">Widowed</option>
+        <option value="separated">Separated</option>
+    </select><br><br>
+
+    <label class="form-label" for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" value="<%= profile.phone && profile.phone.length > 0 ? profile.phone[profile.phone.length - 1] : '' %>" /><br><br>
+
+    <label class="form-label" for="interests">Interests:</label>
+    <input type="text" id="interests" name="interests" value="<%= profile.interests && profile.interests.length > 0 ? profile.interests[profile.interests.length - 1] : '' %>" /><br><br>
+
+    <label class="form-label" for="jobTitle">Job Title:</label>
+    <input type="text" id="jobTitle" name="jobTitle" value="<%= profile.jobTitle && profile.jobTitle.length > 0 ? profile.jobTitle[profile.jobTitle.length - 1] : '' %>" /><br><br>
+
+    <label class="form-label" for="company">Company:</label>
+    <input type="text" id="company" name="company" value="<%= profile.company && profile.company.length > 0 ? profile.company[profile.company.length - 1] : '' %>" /><br><br>
+
+    <label class="form-label" for="education">Education:</label>
+    <input type="text" id="education" name="education" placeholder="Enter your education" value="<%= profile.education && profile.education.length > 0 ? profile.education[profile.education.length - 1] : '' %>" /><br><br>
+
+    <label class="form-label" for="age">Age:</label>
+    <input type="number" id="age" name="age" min="0" value="<%= profile.age || '' %>" /><br><br>
+
+    <label class="form-label" for="location">Location:</label>
+    <input type="text" id="location" name="location" value="<%= profile.location || '' %>" /><br><br>
+
+    <label class="form-label" for="languages">Languages:</label>
+    <input type="text" id="languages" name="languages" value="<%= profile.languages && profile.languages.length > 0 ? profile.languages[profile.languages.length - 1] : '' %>" /><br><br>
+
+    <input type="submit" value="Save Details" class="submit-button">
+    <button type="button" class="cancel-button" onclick="cancelAddingDetails()">Cancel</button>
+</form>
+</div>
+
+<div class="change-password-modal" style="display: none;">
+<div >
+    <h3>Change Password</h3>
+    <form class="form-edit-basic-info" method="POST" action="/users/profile/changepassword">
+        <% if(user.password) { %>
+
+        <label class="form-edit-label" for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+
+                    
+        <label class="form-edit-label" for="password">New Password:</label>
+        <input 
+        type="password" 
+        id="password" 
+        name="password" 
+        required 
+    />
+                    
+        <label class="form-edit-label" for="password2">Confirm Password:</label>
+        <input 
+            type="password" 
+            id="password2" 
+            name="password2" 
+            required 
+        />
+        <% } else { %>
+            <label class="form-edit-label" for="password"> Create Password:</label>
+            <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            required 
+        />
+                        
+            <label class="form-edit-label" for="password2">Confirm Password:</label>
+            <input 
+                type="password" 
+                id="password2" 
+                name="password2" 
+                required 
+            />
+<% } %>    
+        
+        <input type="submit" class="save-basic-btn"  value="Change Password">
+        <button type="button" class="cancle-btn" onclick="closeSettings()">Cancel</button>
+    </form>
+</div>
+</div>
+
+
+</main>
+
+    </div>
+
+
+
+
+</div>
+    
+<script src="/js/profile-function.js"></script>
+
