@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/chat.css"> 
+
+<div class="cover">
+
+<div class="header">
+        <h1>
+        
+            <span class="meet">MEET</span>
+            <span class="me">ME</span>
+    
+        </h1>  
+        
+        <nav class="head">
+    <p class="lead mb-3">
+        Welcome <%= user.firstName + ' ' + user.lastName %>
+    </p>
+    <br>
+    <a href="/dashboard" class="marry">Pet Requests</a>
+
+    <a href="/users/profile">My Profile</a>
+    <a href="#" style="color: white; text-decoration: underline; font-size: 20px; font-weight: 600">Chat</a>
+    <a href="/request/response" class="response">My Breeding Requests</a> 
+    
+
+    <a href="/request/addRequest" class="post-request-link">
+        <i class="fas fa-plus-circle"></i> Create Breeding Request"
+    </a>
+
+    <a href="/auths/logout" class="btn btn-logout">Logout</a> 
+</nav>
+</div>
+<div id="chat-container" class="chat-container" >
+
+    <h1 id="chat-room-title" style="text-align: center; color: #004080;">Chat Room</h1>
+
+    <form id="roomSelectionForm" action="/chat/join" method="POST">
+        <input name="username" id="username" placeholder="Enter your name" required style="width: calc(100% - 10px); margin: 5px 0; padding: 10px; border: 1px solid #004080; border-radius: 5px; background-color: #f0f8ff;" />
+        
+        <label for="room" style="color: #004080;">Select Room to Join:</label>
+        <select id="roomSelect" name="room" required style="width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #004080; border-radius: 5px; background-color: #f0f8ff;">
+            <option value="">Select a room</option>
+            <option value="Dogs">Dogs</option>
+            <option value="Cats">Cats</option>
+            <option value="Other Animals">Other Animals</option>
+            <option value="Marriage">Marriage</option>
+        </select>
+        
+        
+        <input type="submit" value="Join Room" style="padding: 15px; border: none; background-color: #0066cc; color: white; cursor: pointer; width: 100%; border-radius: 5px; font-weight: bold;">
+    </form>
+</div>
+</div>
+
+</div>
