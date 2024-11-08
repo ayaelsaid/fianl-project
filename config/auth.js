@@ -3,6 +3,6 @@ function ensureAuthenticated(req, res, next) {
         return next();
     }
     req.flash('error_msg', 'You need to log in to access this page.');
-    res.redirect('/login'); // Redirect to login if not authenticated
+    res.redirect('/login');
 }
 module.exports = ensureAuthenticated;
