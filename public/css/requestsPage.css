@@ -1,0 +1,222 @@
+body{
+    font-family: Arial, sans-serif;
+
+    overflow-x: hidden;
+    height: 100%;
+    padding: 30px;
+
+    background-color: #75bcff; 
+
+}        
+.header {
+    background-image: url('../imges/istockphoto-1417882544-1024x1024.jpg'); 
+
+    border-top: 10px solid #0066cc;
+    background-color: #f8f9fa; 
+    padding-top: 20px;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+h1 {
+    font-family: 'Arial', sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: baseline; 
+}
+
+/* "MEET" Styles */
+.meet {
+    font-size: 3em;
+    color: #007bff;
+    transition: color 0.3s ease; 
+}
+
+/* Hover effect for "MEET" */
+.meet:hover {
+    color: #0056b3; 
+}
+
+/* "ME" Styles */
+.me {
+    font-size: 2em; 
+    color: #ff4081; 
+    margin-left: 10px;
+    transition: color 0.3s ease; 
+}
+.response {
+    color: #ff4081; 
+
+}
+
+/* Hover effect for "ME" */
+.me:hover {
+    color: #c60055; 
+}      
+.header p {
+margin: 0; /* Remove default margin */
+font-size: 1.5em; /* Larger font size for welcome message */
+font-weight: bold; /* Bold text for emphasis */
+}
+
+.header nav {
+margin-top: 10px;
+padding: 20px 0px;
+text-align: center;
+background-color: #007bff}
+
+.header .head a {
+margin: 0 15px; 
+color: white; 
+text-decoration: none;
+font-weight: 500; 
+transition: color 0.3s ease, transform 0.3s ease; 
+padding: 15px 20px;
+}
+
+.header a:hover {
+text-decoration: underline;
+color: #ff4081; 
+transform: translateY(-2px); 
+}
+
+/* Logout button styles */
+.header .btn-logout {
+background-color: #dc3545; 
+color: white; /* White text color */
+padding: 10px 15px; /* Padding for button */
+border-radius: 5px; /* Rounded corners */
+text-decoration: none; /* Remove underline */
+transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.header .btn-logout:hover {
+background-color: #c82333; 
+}
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 50px;
+  border-top: 10px solid #0066cc;
+}
+.animal-card-container {
+
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-sizing: border-box;
+  background-color: #b3daff; 
+  border-bottom: 10px solid red;
+
+
+}
+
+.animal-card {
+  border-top: 10px solid #0066cc;
+
+  background-color: #ffffff;
+
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.request-cards {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #75bcff;
+  border-radius: 5px;
+}
+
+.request-card {
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  border: 1px solid #0066cc;
+  border-top: 10px solid #0066cc;
+
+
+}
+
+.see-all-requests-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.see-all-requests-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
+  
+  .see-all-requests-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .see-all-requests-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  .post-card {
+    border-bottom: 2px solid #ccc; 
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .animal-card h2, .animal-card p {
+    margin: 5px 0;
+  }
+  
+  
+  .request-card h3 {
+    margin-top: 0;
+  }
+  
+  .owner-info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .owner-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .request-card:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .animal-card-container p {
+    font-size: 16px;
+    color: #333;
+  }
+  .animal-card-container span, .animal-card-container .on {
+    font-size: 0.9rem;
+    color:  #0066cc;
+    margin-left: 5px;
+
+  }

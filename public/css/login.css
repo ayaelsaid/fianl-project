@@ -1,0 +1,149 @@
+
+  body {
+      background-color: bisque; 
+      font-family: Arial, sans-serif;
+      height: 100vh; 
+      margin-right: 0px;
+      
+      background-image: url('../imges/istockphoto-1417882544-1024x1024.jpg'); 
+  }
+
+  .site-name {
+
+display: flex;
+      flex: 1; /* Allow this section to take available space */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      font-size: 48px; /* Font size for site name */
+      color: #007bff; /* Custom color for site name */
+      text-align: center; 
+      margin-right: 50px;/* Center align text */
+  }
+  h1 {
+      font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+      display: flex; /* Flexbox for aligning spans */
+      justify-content: center; /* Center the title */
+      align-items: baseline; /* Align items to their baseline */
+  }
+
+  /* "MEET" Styles */
+  .meet {
+      font-size: 3em; /* Size for "MEET" */
+      color: #007bff; /* Color for "MEET" */
+      transition: color 0.3s ease; /* Smooth color transition */
+  }
+
+  /* Hover effect for "MEET" */
+  .meet:hover {
+      color: #0056b3; /* Darker blue on hover */
+  }
+
+  /* "ME" Styles */
+  .me {
+      font-size: 2em; /* Size for "ME" */
+      color: #ff4081; /* Color for "ME" */
+      margin-left: 10px; /* Space between "MEET" and "ME" */
+      transition: color 0.3s ease; /* Smooth color transition */
+  }
+
+  /* Hover effect for "ME" */
+  .me:hover {
+      color: #c60055; /* Darker pink on hover */
+  }
+
+
+  .card {
+    background-color: #b3daff;
+    color: #0056b3;
+
+      border: none;
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      width: 100%;
+      max-width: 400px; 
+      margin: auto;
+  }
+
+  .card-body {
+    border-top: 10px solid #0066cc ;
+
+      padding: 20px; /* More padding inside the card */
+  }
+
+  h2 {
+    color: #0056b3;
+      font-size: 24px; 
+      margin-bottom: 20px; 
+      text-align: center;
+  }
+h1{
+    font-size: 50px;
+
+}
+  .form-group {
+      margin-bottom: 20px; /* Space between form groups */
+  }
+
+  .form-group label {
+      font-weight: bold; /* Make labels bold */
+      display: block; /* Ensure labels are on their own line */
+      margin-bottom: 5px; /* Space below labels */
+  }
+
+  .form-control {
+      width: 100%; /* Full width for input fields */
+      padding: 10px; /* Padding inside input fields */
+      border: 1px solid #ced4da; /* Border color */
+      border-radius: 5px; /* Rounded corners for inputs */
+      box-sizing: border-box; /* Include padding in width calculation */
+      font-size: 16px; /* Font size for inputs */
+  }
+
+  .form-control:focus {
+      border-color: #007bff; /* Focus border color */
+      outline: none; /* Remove outline */
+  }
+
+  .btn {
+    display: block;
+      background-color: #007bff; /* Button background color */
+      color: white; /* Text color for buttons */
+      padding: 10px; /* Padding inside buttons */
+      border: none; /* Remove border */
+      border-radius: 5px; /* Rounded corners for buttons */
+      width: 100%; /* Full width for buttons */
+      font-size: 16px; /* Font size for buttons */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s;
+      text-align: center; /* Smooth transition on hover */
+  }
+
+  .btn:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+  }
+
+  .lead {
+      font-size: 16px; /* Size for lead text */
+      text-align: center; /* Center align lead text */
+  }
+
+  a {
+      color: #007bff; 
+      text-decoration: none; 
+  }
+
+  a:hover {
+      text-decoration: underline; /* Underline on hover */
+  }
+.btn-google {
+    display: block;
+    padding-left: 10px;
+    width: 95%;
+}
+
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+      .card {
+          margin: 20px; /* Margin for smaller screens */
+      }
+  }

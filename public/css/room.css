@@ -1,0 +1,55 @@
+body {
+    background-color: #75bcff; 
+
+    font-family: Arial, sans-serif; 
+    height: 100vh; 
+    margin-right: 0px;
+    background-image: url('../imges/istockphoto-1417882544-1024x1024.jpg'); /* Replace with your image */
+
+
+}
+.message-box {
+    margin-bottom: 10px; 
+    border: 1px solid #0066cc;
+   background-color: #c4e3ff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 500px;
+}
+/* Adds space between messages */
+
+
+.message-sender {
+    margin-bottom: 5px;
+    background-color: #0066cc;
+    width: 150px;
+    text-align: center;
+    color: white; 
+    font-weight: bold;
+    display: block; 
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.message-text {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.message-date {
+    font-size: 0.9rem;
+    color: #777;
+    display: inline-block;
+}
+
+#sendBtn{
+    font-size: 20px;
+}
+#userSidebar{
+    background-color: #0056b3;
+    color: white;
+
+}

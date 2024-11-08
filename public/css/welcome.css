@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #c4e3ff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+.site-name {
+    background-image: url('../imges/istockphoto-1417882544-1024x1024.jpg'); /* Replace with your image */
+
+    flex: 1; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    font-size: 48px; 
+    color: #007bff;
+    text-align: center; 
+    margin-right: 50px;
+}
+h1 {
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+    display: flex; /* Flexbox for aligning spans */
+    justify-content: center; /* Center the title */
+    align-items: baseline; /* Align items to their baseline */
+}
+
+/* "MEET" Styles */
+.meet {
+    font-size: 3em; /* Size for "MEET" */
+    color: #007bff; /* Color for "MEET" */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for "MEET" */
+.meet:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* "ME" Styles */
+.me {
+    font-size: 2em; /* Size for "ME" */
+    color: #ff4081; /* Color for "ME" */
+    margin-left: 10px; /* Space between "MEET" and "ME" */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for "ME" */
+.me:hover {
+    color: #c60055; /* Darker pink on hover */
+}
+
+
+/* Centered card container */
+.card {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Icon styling */
+h1 i {
+    color: #68a063;
+    margin-bottom: 10px;
+}
+
+/* Text inside card */
+p {
+    color: #333;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+/* Primary button styling */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Secondary button styling */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover effects for buttons */
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
