@@ -1,0 +1,154 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="/css/userpage.css"> 
+
+<div class="head">
+
+<header>
+    <h1>
+        <span class="meet">MEET</span>
+        <span class="me">ME</span>
+    </h1>
+</header>
+</div>
+
+    <div class="profile-container">
+        <div id="image-profile-pic" class="profile-picture">
+            <% if (profile.profileImage) { %>
+                <img src="<%= profile.profileImage %>" alt="Profile Picture" class="profile-img" id="profileImage">
+            <% } else { %>
+                <div class="initials" id="initials">
+                    <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+                </div> 
+            <% } %>
+        </div>
+
+    
+
+    <p class="name" id="userName"><%= user ? (user.firstName + ' ' + user.lastName) : 'Guest' %></p>
+
+</div>
+<div class="photo-cover">
+    <div class="cover-container" id="coverContainer">
+        <div class="coverPreviewContainer">
+            <img src="" id="coverImagePreview" alt="Preview Cover Image" class="preview-image">
+            <% if (profile.coverPhoto) { %>
+                <img src="<%= profile.coverPhoto %>" alt="Cover Photo" class="cover-img" id="coverImage">
+            <% } else { %>
+                <p id="coverInitials">
+                    <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+                </p>
+            <% } %>
+        </div>
+    </div>    
+                    
+</div>           
+<div class="bio-section" style="display: block;">
+                    <div class="profile-bio">
+                        <div class="heart-shape">
+                            <h2>Bio</h2>
+                        </div>
+                        <div class="profile-info">
+                            <% if (profile.bio) { %>
+                                <p id="bio-text"><%= profile.bio %></p>
+                            <% } else { %>
+                                <p>No provided Bio</p>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-cards">
+                    <div class="profile-sections">
+                        <div class="section">
+                            <div class="title-card">
+                                <i class="relationship-icon fa fa-heart"></i>
+                                <p>Relationship Status</p>
+                            </div>
+                            <% if (profile.relationship) { %>
+                            <div class="content">
+                                <p><i class="relationship-icon fa fa-heart"></i> <%= profile.relationship %></p>
+                            </div>
+                            <% } %>
+                
+                            <div class="title-card">
+                                <i class="education-icon fa fa-graduation-cap"></i>
+                                <p>Education & Job Title</p>
+                            </div>
+                            <% if ((profile.jobTitle && profile.jobTitle.length > 0) || (profile.education && profile.education.length > 0)) { %>
+                            <div class="content">
+                                <% if (profile.education && profile.education.length > 0) { %>
+                                    <% profile.education.forEach((education) => { %>
+                                        <p><i class="education-icon fa fa-university"></i> <%= education %></p>
+                                    <% }) %>
+                                <% } %>
+                                
+                                <% if (profile.jobTitle && profile.jobTitle.length > 0) { %>
+                                    <% profile.jobTitle.forEach((jobTitle) => { %>
+                                        <p><i class="education-icon fa fa-briefcase"></i> <%= jobTitle %></p>
+                                    <% }) %>
+                                <% } %>
+                            </div>
+                            <% } %>
+                
+                            <div class="title-card">
+                                <i class="location-icon fa fa-map-marker-alt"></i>
+                                <p>Location</p>
+                            </div>
+                            <% if (profile.location) { %>
+                            <div class="content">
+                                <p><i class="location-icon fa fa-map-marker-alt"></i> <%= profile.location %></p>
+                            </div>
+                            <% } %>
+                        </div>
+                
+                        <div class="section">
+                            <div class="title-card">
+                                <i class="heart-icon fa fa-heart"></i>
+                                <p>Interests</p>
+                            </div>
+                            <% if (profile.interests && profile.interests.length > 0) { %>
+                            <div class="content interest-grid">
+                                <% profile.interests.forEach((interest) => { %>
+                                    <div class="interest-item"><i class="fa fa-heart"></i> <%= interest %></div>
+                                <% }) %>
+                            </div>
+                            <% } %>
+                
+                            <div class="title-card">
+                                <i class="language-icon fa fa-language"></i>
+                                <p>Languages</p>
+                            </div>
+                            <% if (profile.languages && profile.languages.length > 0) { %>
+                            <div class="content">
+                                <% profile.languages.forEach((language) => { %>
+                                    <p><i class="language-icon fa fa-globe"></i> <%= language %></p>
+                                <% }) %>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <p class="photo-p">My Photos</p>
+
+                <div class="more-img">
+            
+                <% if(profile.images) { %>
+                    <% if (profile.images.otherImages) { %>
+                        <% for (let i = 0; i < profile.images.otherImages.length; i++) { %>
+                            <div class="img-more">
+                                <img src="<%= profile.images.otherImages[i].imagePath %>" alt="Other Image">
+                            </div>
+                        <% } %>
+                    <% } else { %>
+            
+                        <p>No photos.</p>
+                    <% } %>
+                </div>
+            <% } %>
+            </div>
+            
+
+
+
+
