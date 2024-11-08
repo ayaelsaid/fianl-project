@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/css/dashboard.css"> 
+
+   
+    <div class="header">
+         <h1>
+         
+             <span class="meet">MEET</span>
+             <span class="me">ME</span>
+     
+         </h1>  
+         
+         <nav class="head">
+        <p class="lead mb-3">
+            Welcome <%= user.firstName + ' ' + user.lastName %>
+        </p>
+        <br>
+        <a href="#" class="marry" style="color: white; text-decoration: underline; font-size: 20px; font-weight: 600">Pet Requests</a>
+
+            <a href="/users/profile">My Profile</a>
+            <a href="/chat/chatroom">Chat</a>
+            <a href="/request//response" class="response">My Breeding Requests</a> 
+            
+
+            <a href="/request/addRequest" class="post-request-link">
+                <i class="fas fa-plus-circle"></i> Create Breeding Request"
+            </a>
+            
+            <a href="/auths/logout" class="btn btn-logout">Logout</a> 
+        </nav>
+
+    </div>
+    <div class="card-container">
+    <% if (allPosts && allPosts.length > 0) { %>
+        <% allPosts.forEach(post => { %>
+            <div class="card">
+                <img src="<%= post.petImage %>" alt="Pet Image">
+                <h3>Hi, I am <%= post.petName %></h3>
+                <p>Age: <%= post.petAge %></p>
+                <p>Species: <%= post.type %></p>
+                <p>Gender: <%= post.petGender %></p>
+                <p>About Me: <%= post.petDescription %>. Marry me?.</p>
+                <p class="owner">Owner: <%= post.petOwnName %></p>
+                <span class="d-post">Date: </span>
+                <span class="post-date" data-date="<%= post.createdAt.toISOString() %>"></span>
+                    <button type="submit" class="marry-btn" onclick="openForm('<%= post.petName %>', '<%= post._id %>')" >Marry Me</button>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No posts found.</p>
+    <% } %>
+
+</div> 
+
+<!-- Overlay form -->
+<div class="overlay" id="formOverlay">
+    <div class="form-container">
+
+        <h2>Marry <span id="animalName"></span></h2>
+        <form action="/request/send-request" method="POST">
+            <input type="hidden" name="postId" id="postId">
+            <input type="text" name="animalName" placeholder="Your Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="animalAge" placeholder="Your Animal's Age" required>
+            <input type="text" name="animalType" placeholder="Your Animal's Type" required>
+            <textarea id="petDescriptionRequest" name="petDescriptionRequest" rows="4" placeholder="Describe your pet..."></textarea>
+
+
+            <input type="submit">
+        </form>
+
+        <button class="close-btn" onclick="closeForm()">Close</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/relativeTime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/isToday.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/isYesterday.min.js"></script>
+
+
+<script src="/js/dashbord-function.js"></script>
