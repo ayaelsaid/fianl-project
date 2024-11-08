@@ -142,7 +142,6 @@ Private Chat Implementation
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Architecture
-![500 ERROR TO ACCESS IT IS SO EASY](https://github.com/ayaelsaid/laxory-Car-Re.github.io/blob/main/Screenshot%202024-06-08%20034132.png)
 
 ### Frontend
 
@@ -258,42 +257,56 @@ const logOut = [
 - **HomePage:** Landing page for the site with information and features.
 
 - **Sign Up:**
-     Users can sign up to create an account on the site.
+
+   Users can sign up to create an account on the site.
 
   **Sign Up With Google**:
-  User can sign up with google
+
+   User can sign up with google
 
 - **Login:**
-     Users can log in to the site to reserve a car.
+
+    Users can log in to the site to reserve a car.
 
   **Login with Google**:
-  Users can log in easily with google
+
+   Users can log in easily with google
 -
 -  **Logout:**
-     To log out of the site.
+
+    To log out of the site.
 
 - **Pet Requests:**
-     Users can see breeding requests and send requests for others to match with pets."
+
+   Users can see breeding requests and send requests for others to match with pets."
 
    **My profile**:
-  Each user can have own profile page and can upload imgs and write bio and share information about him
+
+   Each user can have own profile page and can upload imgs and write bio and share information about him
 
 - **Settings:**
-     Users can change ther password, and if the log in with google they can create a password ,
+
+   Users can change ther password, and if the log in with google they can create a password ,
   users also can edit the basic info and add or edit details about them such as their interests.
 
    **Delete Profile**:
+
   User can delete his account and all his actions like posts.
-  **View Profile as Others See It**:
-  these show the profile as hoe others see it and it show the user info with amazing way
+
+   **View Profile as Others See It**:
+
+   these show the profile as hoe others see it and it show the user info with amazing way
 
    **Chat**
-  a page user can choose the room to jion it and can connect other then direct user to the choosen room
+
+   a page user can choose the room to jion it and can connect other then direct user to the choosen room
 
 **Create Breeding Request**
+  
   allow user to fill form to post their animal info to get breeding requests
 
 **My Breeding Requests**
+ 
   it show to each user it's posted requested with the offers from other users
 
 
