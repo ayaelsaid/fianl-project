@@ -170,9 +170,16 @@ Private Chat Implementation
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+# Project Workflow
+
+![Site's workflow](https://github.com/ayaelsaid/fianl-project/blob/main/readme/imgsproject/Screenshot%202024-11-09%20051851.png)
+
+
  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # snippets 
+
+
 **auth**
 ```
 function ensureAuthenticated(req, res, next) {
@@ -185,6 +192,7 @@ function ensureAuthenticated(req, res, next) {
 ```
 
 **auth of log in:**
+
 ```
 const loginLocally = (req, res, next) => {
     passport.authenticate('local',  (err, user, info) => {
@@ -209,7 +217,9 @@ const loginLocally = (req, res, next) => {
     })(req, res, next);
 }
 ```
+
 **auth of logout**
+
 ```
 const logOut = [
     ensureAuthenticated, (req, res) => {
@@ -260,7 +270,7 @@ const logOut = [
 
    Users can sign up to create an account on the site.
 
-  **Sign Up With Google**:
+- **Sign Up With Google**:
 
    User can sign up with google
 
@@ -268,11 +278,11 @@ const logOut = [
 
     Users can log in to the site to reserve a car.
 
-  **Login with Google**:
+- **Login with Google**:
 
    Users can log in easily with google
--
--  **Logout:**
+
+- **Logout:**
 
     To log out of the site.
 
@@ -280,7 +290,7 @@ const logOut = [
 
    Users can see breeding requests and send requests for others to match with pets."
 
-   **My profile**:
+- **My profile**:
 
    Each user can have own profile page and can upload imgs and write bio and share information about him
 
@@ -289,29 +299,30 @@ const logOut = [
    Users can change ther password, and if the log in with google they can create a password ,
   users also can edit the basic info and add or edit details about them such as their interests.
 
-   **Delete Profile**:
+- **Delete Profile**:
 
   User can delete his account and all his actions like posts.
 
-   **View Profile as Others See It**:
+- **View Profile as Others See It**:
 
    these show the profile as hoe others see it and it show the user info with amazing way
 
-   **Chat**
+- **Chat**
 
    a page user can choose the room to jion it and can connect other then direct user to the choosen room
 
-**Create Breeding Request**
+- **Create Breeding Request**
   
   allow user to fill form to post their animal info to get breeding requests
 
-**My Breeding Requests**
+- **My Breeding Requests**
  
   it show to each user it's posted requested with the offers from other users
 
 
 --------------------------------------------------------------------------------------------------------------------------------------
 ## Future Improvements & Features
+
 1 - **Private Chat Rooms for Each User**
   
   Plan: To enhance communication, each user will have their own private chat room for one-on-one conversations.
