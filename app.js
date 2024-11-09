@@ -13,7 +13,7 @@ const http = require('http');
 
 const PORT = process.env.PORT || 3000;
 
-require('./config/passportConfig')(passport); // Adjust path as needed
+require('./config/passportConfig')(passport);
 
 
 const app = express();
@@ -38,7 +38,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
 
-// Serve static files (optional)
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
